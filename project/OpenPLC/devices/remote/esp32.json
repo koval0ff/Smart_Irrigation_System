@@ -1,0 +1,133 @@
+{
+  "name": "esp32",
+  "protocol": "modbus-tcp",
+  "modbusTcpConfig": {
+    "host": "192.168.1.143",
+    "port": 502,
+    "timeout": 1000,
+    "slaveId": 1,
+    "ioGroups": [
+      {
+        "id": "1f9bc4e7-fcdc-4c1e-8500-85c96887c04e",
+        "name": "Sensors",
+        "functionCode": "4",
+        "cycleTime": 500,
+        "offset": "0",
+        "length": 8,
+        "errorHandling": "keep-last-value",
+        "ioPoints": [
+          {
+            "id": "Sensors_0",
+            "name": "Sensors_0",
+            "type": "Analog Input (Input Register)",
+            "iecLocation": "%IW0",
+            "alias": ""
+          },
+          {
+            "id": "Sensors_1",
+            "name": "Sensors_1",
+            "type": "Analog Input (Input Register)",
+            "iecLocation": "%IW1",
+            "alias": ""
+          },
+          {
+            "id": "Sensors_2",
+            "name": "Sensors_2",
+            "type": "Analog Input (Input Register)",
+            "iecLocation": "%IW2",
+            "alias": ""
+          },
+          {
+            "id": "Sensors_3",
+            "name": "Sensors_3",
+            "type": "Analog Input (Input Register)",
+            "iecLocation": "%IW3",
+            "alias": ""
+          },
+          {
+            "id": "Sensors_4",
+            "name": "Sensors_4",
+            "type": "Analog Input (Input Register)",
+            "iecLocation": "%IW4",
+            "alias": ""
+          },
+          {
+            "id": "Sensors_5",
+            "name": "Sensors_5",
+            "type": "Analog Input (Input Register)",
+            "iecLocation": "%IW5",
+            "alias": ""
+          },
+          {
+            "id": "Sensors_6",
+            "name": "Sensors_6",
+            "type": "Analog Input (Input Register)",
+            "iecLocation": "%IW6",
+            "alias": ""
+          },
+          {
+            "id": "Sensors_7",
+            "name": "Sensors_7",
+            "type": "Analog Input (Input Register)",
+            "iecLocation": "%IW7",
+            "alias": ""
+          }
+        ]
+      },
+      {
+        "id": "3ff0b9e9-3f0f-4f32-a89a-557916451b01",
+        "name": "MotorCommand",
+        "functionCode": "15",
+        "cycleTime": 100,
+        "offset": "0",
+        "length": 1,
+        "errorHandling": "keep-last-value",
+        "ioPoints": [
+          {
+            "id": "MotorCommand_0",
+            "name": "MotorCommand_0",
+            "type": "Digital Output (Multiple Coils)",
+            "iecLocation": "%QX0.0",
+            "alias": ""
+          }
+        ]
+      },
+      {
+        "id": "818dcd5a-50bb-4534-a816-5db86362b28f",
+        "name": "MotorFeedback",
+        "functionCode": "2",
+        "cycleTime": 500,
+        "offset": "0",
+        "length": 1,
+        "errorHandling": "keep-last-value",
+        "ioPoints": [
+          {
+            "id": "MotorFeedback_0",
+            "name": "MotorFeedback_0",
+            "type": "Digital Input (Discrete Input)",
+            "iecLocation": "%IX0.0",
+            "alias": ""
+          }
+        ]
+      },
+      {
+        "id": "feeb9848-e929-4eb0-b3af-92b927c24060",
+        "name": "Hall",
+        "functionCode": "2",
+        "cycleTime": 100,
+        "offset": "1",
+        "length": 1,
+        "errorHandling": "keep-last-value",
+        "ioPoints": [
+          {
+            "id": "Hall_0",
+            "name": "Hall_0",
+            "type": "Digital Input (Discrete Input)",
+            "iecLocation": "%IX0.1",
+            "alias": ""
+          }
+        ]
+      }
+    ]
+  }
+}

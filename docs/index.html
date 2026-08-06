@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Smart Irrigation System — an industrial automation prototype by Danylo Kovalov, built with ESP32, Raspberry Pi, OpenPLC and Modbus TCP.">
+  <meta name="theme-color" content="#f5f5f7">
+  <title>Smart Irrigation System — Danylo Kovalov</title>
+  <link rel="preload" href="assets/images/system-hero.webp" as="image">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Smart Irrigation System home">
+      <span class="brand-mark">SI</span>
+      <span>Smart Irrigation</span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#system" data-i18n="nav.system">System</a>
+      <a href="#engineering" data-i18n="nav.engineering">Engineering</a>
+      <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+    </nav>
+    <div class="language-switcher" role="group" aria-label="Language">
+      <button class="lang-button active" type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button class="lang-button" type="button" data-lang="de" aria-pressed="false">DE</button>
+      <button class="lang-button" type="button" data-lang="uk" aria-pressed="false">UA</button>
+      <span class="lang-indicator" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-dark">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Industrial automation prototype</p>
+        <h1 data-i18n="hero.title">Smart Irrigation System</h1>
+        <p class="hero-lead" data-i18n="hero.lead">A working PLC-controlled watering system built from scratch with ESP32, Raspberry Pi, OpenPLC and Modbus TCP.</p>
+        <div class="tech-line" aria-label="Technologies">
+          <span>ESP32</span><i></i><span>OpenPLC</span><i></i><span>Raspberry Pi</span><i></i><span>Modbus TCP</span>
+        </div>
+        <a class="primary-link" href="#system"><span data-i18n="hero.cta">Explore the project</span><b>↓</b></a>
+      </div>
+      <figure class="hero-media reveal delay-1">
+        <img src="assets/images/system-hero.webp" alt="Working smart irrigation prototype next to a plant" fetchpriority="high">
+        <figcaption data-i18n="hero.caption">A functional prototype — sensors, pump, reservoir and PLC control working as one system.</figcaption>
+      </figure>
+    </section>
+
+    <section class="statement" id="system">
+      <div class="narrow reveal">
+        <p class="eyebrow" data-i18n="problem.eyebrow">The idea</p>
+        <h2 data-i18n="problem.title">Plants should not depend on memory.</h2>
+        <p data-i18n="problem.text">The system monitors soil conditions, verifies that water is available and lets the PLC decide when and how long the pump should run.</p>
+      </div>
+    </section>
+
+    <section class="architecture section-soft">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-i18n="architecture.eyebrow">System architecture</p>
+        <h2 data-i18n="architecture.title">Embedded sensing. Industrial logic.</h2>
+        <p data-i18n="architecture.text">ESP32 handles physical I/O. OpenPLC on Raspberry Pi executes the control algorithm. Modbus TCP connects both layers.</p>
+      </div>
+      <div class="flow reveal delay-1" aria-label="System architecture diagram">
+        <article class="flow-node"><span>01</span><strong data-i18n="architecture.sensor">Sensors</strong><small data-i18n="architecture.sensorSub">Moisture · temperature · tank</small></article>
+        <div class="flow-connector"><i></i><em>signals</em></div>
+        <article class="flow-node featured"><span>02</span><strong>ESP32</strong><small data-i18n="architecture.espSub">Remote I/O and web diagnostics</small></article>
+        <div class="flow-connector active"><i></i><em>Modbus TCP</em></div>
+        <article class="flow-node featured"><span>03</span><strong>OpenPLC</strong><small data-i18n="architecture.plcSub">State machine and timing logic</small></article>
+        <div class="flow-connector"><i></i><em>command</em></div>
+        <article class="flow-node"><span>04</span><strong data-i18n="architecture.pump">Water pump</strong><small data-i18n="architecture.pumpSub">Controlled irrigation output</small></article>
+      </div>
+    </section>
+
+    <section class="metrics section-dark">
+      <div class="metric reveal"><span class="metric-value">3474</span><p data-i18n="metrics.dry">Typical dry-soil reading</p></div>
+      <div class="metric reveal delay-1"><span class="metric-value">2200</span><p data-i18n="metrics.wet">Reading after watering</p></div>
+      <div class="metric reveal delay-2"><span class="metric-value">6 s</span><p data-i18n="metrics.confirm">Dry-condition confirmation</p></div>
+      <div class="metric reveal delay-3"><span class="metric-value">5 min</span><p data-i18n="metrics.absorb">Water absorption interval</p></div>
+    </section>
+
+    <section class="engineering" id="engineering">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-i18n="journey.eyebrow">Development journey</p>
+        <h2 data-i18n="journey.title">Built, tested and debugged step by step.</h2>
+      </div>
+
+      <article class="story-row reveal">
+        <div class="story-image"><img src="assets/images/prototype-breadboard.webp" alt="Early ESP32 breadboard prototype" loading="lazy"></div>
+        <div class="story-copy"><span>01</span><h3 data-i18n="journey.prototypeTitle">First breadboard prototype</h3><p data-i18n="journey.prototypeText">The first stage established sensor input, transistor switching and ESP32 firmware on a modular breadboard setup.</p></div>
+      </article>
+
+      <article class="story-row reverse reveal">
+        <div class="story-image portrait"><img src="assets/images/soldering-process.webp" alt="Manual soldering during development" loading="lazy"></div>
+        <div class="story-copy"><span>02</span><h3 data-i18n="journey.hardwareTitle">Hands-on hardware work</h3><p data-i18n="journey.hardwareText">Modules were soldered and adapted manually. Measurement problems were investigated using raw register data and electrical tests.</p></div>
+      </article>
+
+      <article class="story-row reveal">
+        <div class="story-image"><img src="assets/images/raspberry-pi.webp" alt="Raspberry Pi used as OpenPLC runtime" loading="lazy"></div>
+        <div class="story-copy"><span>03</span><h3 data-i18n="journey.plcTitle">PLC runtime integration</h3><p data-i18n="journey.plcText">Raspberry Pi hosts OpenPLC Runtime while the ESP32 is mapped as a Modbus TCP remote device.</p></div>
+      </article>
+
+      <article class="story-row reverse reveal">
+        <div class="story-image"><img src="assets/images/system-detail.webp" alt="Complete irrigation prototype operating beside a plant" loading="lazy"></div>
+        <div class="story-copy"><span>04</span><h3 data-i18n="journey.resultTitle">First autonomous watering</h3><p data-i18n="journey.resultText">The complete chain — sensing, PLC decision, command transmission and pump actuation — was successfully tested.</p></div>
+      </article>
+    </section>
+
+    <section class="plc-section section-soft">
+      <div class="plc-copy reveal">
+        <p class="eyebrow" data-i18n="plc.eyebrow">PLC logic</p>
+        <h2 data-i18n="plc.title">The controller decides. The ESP32 executes.</h2>
+        <p data-i18n="plc.text">Control logic is implemented in IEC 61131-3 Structured Text. A state machine confirms dry soil, runs timed irrigation and waits for water absorption before measuring again.</p>
+        <ul>
+          <li data-i18n="plc.item1">Modbus input and output mapping</li>
+          <li data-i18n="plc.item2">Timed state-machine control</li>
+          <li data-i18n="plc.item3">Tank-empty safety interlock</li>
+          <li data-i18n="plc.item4">Debugging with live PLC variables</li>
+        </ul>
+      </div>
+      <figure class="plc-image reveal delay-1">
+        <img src="assets/images/openplc-editor.webp" alt="OpenPLC Editor showing Structured Text and live debugger values" loading="lazy">
+      </figure>
+    </section>
+
+    <section class="dashboard-section section-dark">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-i18n="dashboard.eyebrow">Interface concept</p>
+        <h2 data-i18n="dashboard.title">A compact view of the running system.</h2>
+        <p data-i18n="dashboard.note">Demonstration values based on recorded prototype measurements.</p>
+      </div>
+      <div class="dashboard reveal delay-1">
+        <div class="dash-top"><span class="status-dot"></span><strong>Smart Irrigation</strong><small data-i18n="dashboard.online">System online</small></div>
+        <div class="dash-grid">
+          <article><small data-i18n="dashboard.soil">Soil reading</small><strong id="soil-value">2470</strong><div class="bar"><i id="soil-bar"></i></div></article>
+          <article><small data-i18n="dashboard.tank">Water tank</small><strong class="good" data-i18n="dashboard.available">Available</strong><span>Hall sensor</span></article>
+          <article><small data-i18n="dashboard.temp">Temperature</small><strong>25.9 °C</strong><span>DS18B20</span></article>
+          <article><small data-i18n="dashboard.pump">Pump</small><strong id="pump-status" data-i18n="dashboard.standby">Standby</strong><span>PLC output QX0.0</span></article>
+          <article><small>OpenPLC</small><strong class="good" data-i18n="dashboard.running">Running</strong><span>Raspberry Pi</span></article>
+          <article><small>Modbus TCP</small><strong class="good">Online</strong><span>Remote I/O</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="challenges">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-i18n="challenges.eyebrow">Engineering challenges</p>
+        <h2 data-i18n="challenges.title">The problems are part of the project.</h2>
+      </div>
+      <div class="challenge-grid">
+        <article class="reveal"><b>01</b><h3 data-i18n="challenges.modbusTitle">Modbus mapping</h3><p data-i18n="challenges.modbusText">Aligned PLC addresses, offsets, function codes and ESP32 registers.</p><span data-i18n="common.solved">Solved</span></article>
+        <article class="reveal delay-1"><b>02</b><h3 data-i18n="challenges.hallTitle">Hall sensor logic</h3><p data-i18n="challenges.hallText">Verified signal polarity and mapped the tank state into PLC safety logic.</p><span data-i18n="common.solved">Solved</span></article>
+        <article class="reveal delay-2"><b>03</b><h3 data-i18n="challenges.timingTitle">PLC timing logic</h3><p data-i18n="challenges.timingText">Built a state machine for confirmation, irrigation and absorption intervals.</p><span data-i18n="common.solved">Solved</span></article>
+        <article class="reveal delay-3 in-progress"><b>04</b><h3 data-i18n="challenges.currentTitle">Current measurement</h3><p data-i18n="challenges.currentText">INA3221 voltage monitoring works; accurate current calibration remains under investigation.</p><span data-i18n="common.progress">In progress</span></article>
+      </div>
+    </section>
+
+    <section class="gallery section-soft" id="gallery">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-i18n="gallery.eyebrow">Gallery</p>
+        <h2 data-i18n="gallery.title">A real development process, not a studio mock-up.</h2>
+      </div>
+      <div class="gallery-grid">
+        <button class="gallery-item wide reveal" data-full="assets/images/full-test-bench.webp"><img src="assets/images/full-test-bench-thumb.webp" alt="Full electronics and hydraulic test bench" loading="lazy"><span data-i18n="gallery.testbench">Complete test bench</span></button>
+        <button class="gallery-item reveal" data-full="assets/images/hardware-layout.webp"><img src="assets/images/hardware-layout-thumb.webp" alt="Electronics modules during assembly" loading="lazy"><span data-i18n="gallery.hardware">Hardware assembly</span></button>
+        <button class="gallery-item reveal delay-1" data-full="assets/images/ina3221-soldering.webp"><img src="assets/images/ina3221-soldering-thumb.webp" alt="Close-up soldering of INA3221 module" loading="lazy"><span>INA3221</span></button>
+        <button class="gallery-item tall reveal" data-full="assets/images/soldering-process.webp"><img src="assets/images/soldering-process-thumb.webp" alt="Soldering process" loading="lazy"><span data-i18n="gallery.soldering">Manual soldering</span></button>
+        <button class="gallery-item wide reveal delay-1" data-full="assets/images/system-hero.webp"><img src="assets/images/system-hero-thumb.webp" alt="Working irrigation system" loading="lazy"><span data-i18n="gallery.prototype">Working prototype</span></button>
+      </div>
+    </section>
+
+    <section class="roadmap">
+      <div class="section-heading reveal">
+        <p class="eyebrow" data-i18n="roadmap.eyebrow">Roadmap</p>
+        <h2 data-i18n="roadmap.title">The prototype is working. Development continues.</h2>
+      </div>
+      <div class="roadmap-list reveal">
+        <div class="done"><span>✓</span><p data-i18n="roadmap.auto">Automatic moisture-based irrigation</p></div>
+        <div class="done"><span>✓</span><p data-i18n="roadmap.tank">Water tank monitoring</p></div>
+        <div class="done"><span>✓</span><p data-i18n="roadmap.modbus">OpenPLC and Modbus TCP integration</p></div>
+        <div><span>→</span><p data-i18n="roadmap.current">Pump current calibration and fault detection</p></div>
+        <div><span>→</span><p data-i18n="roadmap.history">Historical charts and event logging</p></div>
+        <div><span>→</span><p data-i18n="roadmap.telegram">Telegram status and alarm notifications</p></div>
+        <div><span>→</span><p data-i18n="roadmap.light">Automatic lighting using the existing light sensor</p></div>
+      </div>
+    </section>
+
+    <section class="about-developer section-soft" id="about">
+      <div class="about-copy reveal">
+        <p class="eyebrow" data-i18n="about.eyebrow">About the developer</p>
+        <h2 data-i18n="author.name">Danylo Kovalov</h2>
+        <p class="about-role" data-i18n="about.role">Automation and PLC projects</p>
+        <p class="about-text" data-i18n="about.text">I build practical automation projects that connect sensors, PLC logic and real hardware.</p>
+        <div class="about-tags" aria-label="Core skills">
+          <span data-i18n="about.skill1">PLC Logic</span>
+          <span data-i18n="about.skill2">ESP32 &amp; Sensors</span>
+          <span data-i18n="about.skill3">Modbus TCP</span>
+        </div>
+        <a class="about-link" href="https://github.com/koval0ff" target="_blank" rel="noreferrer"><span data-i18n="about.github">View GitHub profile</span> ↗</a>
+      </div>
+      <figure class="about-visual reveal delay-1" aria-label="Danylo Kovalov portrait">
+        <img src="assets/images/danylo-about.webp" alt="Danylo Kovalov" loading="lazy">
+      </figure>
+    </section>
+  </main>
+
+  <footer class="footer section-dark">
+    <p class="eyebrow" data-i18n="footer.eyebrow">Project by</p>
+    <h2 data-i18n="author.name">Danylo Kovalov</h2>
+    <p data-i18n="footer.role">Automation & Embedded Systems Developer</p>
+    <a href="https://github.com/koval0ff/Smart_Irrigation_System" target="_blank" rel="noreferrer">GitHub ↗</a>
+    <small>© <span id="year"></span> Danylo Kovalov</small>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox">
+    <button type="button" aria-label="Close image">×</button>
+    <img src="" alt="Expanded project photograph">
+  </dialog>
+
+  <script src="js/translations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0201" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:ns1="http://www.plcopen.org/xml/tc6_0201">
+  <fileHeader companyName="Unknown" productName="Unnamed" productVersion="1" creationDateTime="2026-08-02T16:22:40"/>
+  <contentHeader name="Unnamed" modificationDateTime="2026-08-02T16:22:40">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="16" y="16"/>
+      </fbd>
+      <ld>
+        <scaling x="16" y="16"/>
+      </ld>
+      <sfc>
+        <scaling x="16" y="16"/>
+      </sfc>
+    </coordinateInfo>
+  </contentHeader>
+  <types>
+    <dataTypes/>
+    <pous>
+      <pou name="main" pouType="program">
+        <interface>
+          <localVars>
+            <variable name="MoistureRaw" address="%IW0">
+              <type>
+                <UINT/>
+              </type>
+            </variable>
+            <variable name="LightRaw" address="%IW1">
+              <type>
+                <UINT/>
+              </type>
+            </variable>
+            <variable name="TemperatureRaw" address="%IW2">
+              <type>
+                <INT/>
+              </type>
+            </variable>
+            <variable name="TemperatureOK" address="%IW3">
+              <type>
+                <UINT/>
+              </type>
+            </variable>
+            <variable name="BatteryVoltageMv" address="%IW4">
+              <type>
+                <UINT/>
+              </type>
+            </variable>
+            <variable name="MotorCurrentMa" address="%IW5">
+              <type>
+                <UINT/>
+              </type>
+            </variable>
+            <variable name="InaOK" address="%IW6">
+              <type>
+                <UINT/>
+              </type>
+            </variable>
+            <variable name="ShuntVoltageUv" address="%IW7">
+              <type>
+                <UINT/>
+              </type>
+            </variable>
+            <variable name="MotorFeedback" address="%IX0.0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="HallActive" address="%IX0.1">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="MotorCommand" address="%QX0.0">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="TemperatureC">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="BatteryVoltageV">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="ShuntVoltageMv">
+              <type>
+                <REAL/>
+              </type>
+            </variable>
+            <variable name="WaterPresent">
+              <type>
+                <BOOL/>
+              </type>
+            </variable>
+            <variable name="DryDelayTimer">
+              <type>
+                <derived name="TON"/>
+              </type>
+            </variable>
+            <variable name="PumpTimer">
+              <type>
+                <derived name="TON"/>
+              </type>
+            </variable>
+            <variable name="AbsorbTimer">
+              <type>
+                <derived name="TON"/>
+              </type>
+            </variable>
+            <variable name="State">
+              <type>
+                <INT/>
+              </type>
+              <initialValue>
+                <simpleValue value="0"/>
+              </initialValue>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml:p><![CDATA[IF TemperatureOK = 1 THEN
+    TemperatureC := INT_TO_REAL(TemperatureRaw) / 100.0;
+ELSE
+    TemperatureC := 0.0;
+END_IF;
+
+BatteryVoltageV :=
+    UINT_TO_REAL(BatteryVoltageMv) / 1000.0;
+
+ShuntVoltageMv :=
+    UINT_TO_REAL(ShuntVoltageUv) / 1000.0;
+
+WaterPresent := HallActive;
+
+CASE State OF
+
+0:
+    MotorCommand := FALSE;
+
+    DryDelayTimer(
+        IN := WaterPresent AND (MoistureRaw > 3000),
+        PT := T#6s
+    );
+
+    IF DryDelayTimer.Q THEN
+        State := 1;
+    END_IF;
+
+1:
+    MotorCommand := WaterPresent;
+
+    PumpTimer(
+        IN := TRUE,
+        PT := T#3s
+    );
+
+    IF PumpTimer.Q OR NOT WaterPresent THEN
+        MotorCommand := FALSE;
+        State := 2;
+    END_IF;
+
+2:
+    MotorCommand := FALSE;
+
+    AbsorbTimer(
+        IN := TRUE,
+        PT := T#5m
+    );
+
+    IF AbsorbTimer.Q THEN
+        IF WaterPresent AND (MoistureRaw > 2300) THEN
+            State := 1;
+        ELSE
+            State := 0;
+        END_IF;
+    END_IF;
+
+ELSE
+    MotorCommand := FALSE;
+    State := 0;
+
+END_CASE;]]></xhtml:p>
+          </ST>
+        </body>
+        <documentation>
+          <xhtml:p><![CDATA[ ]]></xhtml:p>
+        </documentation>
+      </pou>
+    </pous>
+  </types>
+  <instances>
+    <configurations>
+      <configuration name="Config0">
+        <resource name="Res0">
+          <task name="task0" priority="1" interval="T#20ms">
+            <pouInstance name="instance0" typeName="main"/>
+          </task>
+        </resource>
+      </configuration>
+    </configurations>
+  </instances>
+</project>
