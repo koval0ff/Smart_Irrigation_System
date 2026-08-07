@@ -6,7 +6,6 @@ This project demonstrates how a programmable logic controller (PLC) can be integ
 
 \---
 
-!\[Architecture](project/Hardware/Architecture.png)
 ## 🌍 Live Demo
 
 https://koval0ff.github.io/Smart\_Irrigation\_System/
