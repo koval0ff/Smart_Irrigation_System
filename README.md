@@ -4,13 +4,15 @@ Industrial automatic irrigation system based on **ESP32**, **OpenPLC**, **Raspbe
 
 This project demonstrates how a programmable logic controller (PLC) can be integrated with embedded hardware to create a reliable and modular irrigation system.
 
----
+!\[Architecture](project/Hardware/Architecture.png)
+
+\---
 
 ## 🌍 Live Demo
 
-https://koval0ff.github.io/Smart_Irrigation_System/
+https://koval0ff.github.io/Smart\_Irrigation\_System/
 
----
+\---
 
 ## 📖 Project Overview
 
@@ -24,35 +26,35 @@ Communication between both devices is implemented via Modbus TCP over Wi-Fi.
 
 The project was developed as a personal portfolio project to demonstrate practical skills in PLC programming, embedded systems and industrial communication protocols.
 
----
+\---
 
 ## 🚀 Features
 
-- Soil moisture monitoring
-- Water tank level detection
-- Pump control
-- Battery voltage monitoring
-- Pump current monitoring
-- Temperature monitoring
-- Embedded diagnostic web interface
-- OTA firmware updates
-- Modbus TCP communication
-- PLC-based irrigation logic
+* Soil moisture monitoring
+* Water tank level detection
+* Pump control
+* Battery voltage monitoring
+* Pump current monitoring
+* Temperature monitoring
+* Embedded diagnostic web interface
+* OTA firmware updates
+* Modbus TCP communication
+* PLC-based irrigation logic
 
----
+\---
 
 ## 🛠 Technologies
 
-- ESP32
-- OpenPLC
-- Raspberry Pi
-- Arduino Framework
-- Modbus TCP
-- HTML / CSS / JavaScript
-- C++
-- IEC 61131-3 Structured Text
+* ESP32
+* OpenPLC
+* Raspberry Pi
+* Arduino Framework
+* Modbus TCP
+* HTML / CSS / JavaScript
+* C++
+* IEC 61131-3 Structured Text
 
----
+\---
 
 ## 📂 Repository Structure
 
@@ -76,12 +78,13 @@ Hardware diagrams, wiring documentation and component information.
 
 Additional project documentation.
 
----
+\---
 
 ## 👨‍💻 Author
 
 **Danylo Kovalov**
 
-Automation & PLC Developer
+Automation \& PLC Developer
 
 Germany, Hannover
+
