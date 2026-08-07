@@ -4,10 +4,9 @@ Industrial automatic irrigation system based on **ESP32**, **OpenPLC**, **Raspbe
 
 This project demonstrates how a programmable logic controller (PLC) can be integrated with embedded hardware to create a reliable and modular irrigation system.
 
-!\[Architecture](project/Hardware/Architecture.png)
-
 \---
 
+!\[Architecture](project/Hardware/Architecture.png)
 ## 🌍 Live Demo
 
 https://koval0ff.github.io/Smart\_Irrigation\_System/
